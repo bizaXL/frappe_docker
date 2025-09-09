@@ -124,11 +124,6 @@ ENV PYTHONUNBUFFERED=1
 ENV BENCH_INSTALL_CONFIRM=1
 ENV FRAPPE_INSTALL_CONFIRM=1
 
-# Clean previous bench directory and ensure ownership
-RUN rm -rf /home/frappe/frappe-bench /home/frappe/.bench || true && \
-    mkdir -p /home/frappe/frappe-bench && \
-    chown -R frappe:frappe /home/frappe
-
 RUN export APP_INSTALL_ARGS="" && \
   if [ -n "${APPS_JSON_BASE64}" ]; then \
     export APP_INSTALL_ARGS="--apps_path=/opt/frappe/apps.json"; \
